@@ -3,47 +3,164 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🎂 MQ 27岁生日邀请</title>
+    <title>MQ 的 27 岁生日邀请</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="hero.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>🎉 星露谷生日邀请函</h1>
-        <div class="card" id="birthdayCard">
-            <span class="avatar" id="avatar">🎈</span>
-            <h2 id="name">🎂 亲爱的 MQ</h2>
-            <p class="age">✨ 欢迎来到 <strong>27 岁</strong> 的生日派对！</p>
-            <div class="info-grid">
-                <div class="info-item"><span class="icon">📅</span><span>2026年9月12日 星期六</span></div>
-                <div class="info-item"><span class="icon">⏰</span><span>19:00</span></div>
-                <div class="info-item"><span class="icon">📍</span><span>长沙市岳麓区蕊果 RiNGÓ</span></div>
+    <div class="hero">
+        <div class="container">
+            <!-- HUD 顶部状态栏 -->
+            <div class="game-hud">
+                <span class="hud-day">🌞 秋 · 第 27 年</span>
+                <span class="hud-time">⏰ 19:00</span>
+                <button id="hudMusicToggle" class="hud-music-toggle">🔇</button>
             </div>
-            <div class="tasks">
-                <p class="tasks-title">🎯 你的任务（4项）</p>
-                <ul>
-                    <li>✅ 带上好心情</li>
-                    <li>✅ 准时到场</li>
-                    <li>✅ 准备一个小故事</li>
-                    <li>✅ 拥抱寿星</li>
-                </ul>
-            </div>
-            <div class="menu">
-                <p class="menu-title">🍽️ 当晚菜单</p>
-                <div class="menu-items">
-                    <span>🎂 生日蛋糕（定制款）</span>
-                    <span>🍺 啤酒</span>
-                    <span>🍟 炸薯条</span>
+
+            <h1 class="main-title">🎉 星露谷生日邀请函</h1>
+
+            <div class="card">
+                <div class="avatar-wrapper">
+                    <span class="avatar">🎈</span>
                 </div>
-            </div>
-            <p class="message" id="message">愿你的27岁，像星露谷的秋天一样，硕果累累，温暖灿烂！</p>
-            <div class="button-group">
-                <button onclick="toggleMusic()">🎵 播放音乐</button>
-                <button onclick="generateNew()">✨ 随机祝福</button>
-                <button onclick="openMap()">🗺️ 导航前往</button>
+
+                <h2 class="name">🎂 亲爱的 <span class="highlight">MQ</span></h2>
+
+                <p class="age-tag">✨ 欢迎来到 <strong>27 岁</strong> 的生日派对！</p>
+
+                <div class="info-grid">
+                    <div class="info-item"><span class="icon">📅</span><span>2026年9月12日 星期六</span></div>
+                    <div class="info-item"><span class="icon">⏰</span><span>19:00</span></div>
+                    <div class="info-item"><span class="icon">📍</span><span>长沙市岳麓区蕊果 RiNGÓ</span></div>
+                </div>
+
+                <div class="tasks">
+                    <p class="tasks-title">🎯 你的任务（4项）</p>
+                    <ul>
+                        <li>✅ 带上好心情</li>
+                        <li>✅ 准时到场</li>
+                        <li>✅ 准备一个小故事</li>
+                        <li>✅ 拥抱寿星</li>
+                    </ul>
+                </div>
+
+                <div class="menu">
+                    <p class="menu-title">🍽️ 当晚菜单</p>
+                    <div class="menu-items">
+                        <span>🎂 生日蛋糕（定制款）</span>
+                        <span>🍺 啤酒</span>
+                        <span>🍟 炸薯条</span>
+                    </div>
+                </div>
+
+                <p class="message" id="greeting">✨ 愿你的27岁，像星露谷的秋天一样，硕果累累，温暖灿烂！</p>
+
+                <div class="button-group">
+                    <button class="music-btn" id="musicBtn">🎵 播放音乐</button>
+                    <button id="randomBtn">✨ 随机祝福</button>
+                    <button class="map-btn" id="mapBtn">🗺️ 导航前往</button>
+                </div>
             </div>
         </div>
     </div>
-    <audio id="bgm" loop><source src="assets/birthday-bgm.mp3" type="audio/mpeg"></audio>
-    <script src="script.js"></script>
+
+    <audio id="bgm" loop preload="none">
+        <source src="assets/birthday-bgm.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const BIRTHDAY_DATA = {
+            name: "MQ",
+            age: "27",
+            ageText: "27 岁",
+            date: "2026年9月12日 星期六",
+            time: "19:00",
+            location: "长沙市岳麓区蕊果 RiNGÓ",
+            tasks: ["✅ 带上好心情", "✅ 准时到场", "✅ 准备一个小故事", "✅ 拥抱寿星"],
+            menu: ["🎂 生日蛋糕（定制款）", "🍺 啤酒", "🍟 炸薯条"],
+            avatar: "🎈"
+        };
+
+        const GREETINGS = [
+            "✨ 愿你的27岁，像星露谷的秋天一样，硕果累累，温暖灿烂！",
+            "🎈 生日快乐 MQ！愿新的一岁，农场丰收，幸福满仓！",
+            "🌻 27岁，是星露谷里最美好的季节，愿你享受每一天！",
+            "💎 祝 MQ 生日快乐！愿你的生活像宝石一样闪闪发光！",
+            "🌱 新的一岁，愿你种下的每一颗种子，都开出美丽的花！"
+        ];
+
+        // 应用数据
+        document.querySelector('.highlight').textContent = BIRTHDAY_DATA.name;
+        document.querySelector('.age-tag strong').textContent = BIRTHDAY_DATA.ageText;
+        document.querySelector('.avatar').textContent = BIRTHDAY_DATA.avatar;
+
+        const infoItems = document.querySelectorAll('.info-item span:last-child');
+        if (infoItems.length >= 3) {
+            infoItems[0].textContent = BIRTHDAY_DATA.date;
+            infoItems[1].textContent = BIRTHDAY_DATA.time;
+            infoItems[2].textContent = BIRTHDAY_DATA.location;
+        }
+
+        const taskList = document.querySelector('.tasks ul');
+        if (taskList) {
+            taskList.innerHTML = '';
+            BIRTHDAY_DATA.tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = task;
+                taskList.appendChild(li);
+            });
+        }
+
+        const menuItems = document.querySelector('.menu-items');
+        if (menuItems) {
+            menuItems.innerHTML = '';
+            BIRTHDAY_DATA.menu.forEach(item => {
+                const span = document.createElement('span');
+                span.textContent = item;
+                menuItems.appendChild(span);
+            });
+        }
+
+        // 音乐控制
+        const audio = document.getElementById('bgm');
+        const musicBtn = document.getElementById('musicBtn');
+        const hudToggle = document.getElementById('hudMusicToggle');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                musicBtn.textContent = '🎵 播放音乐';
+                hudToggle.textContent = '🔇';
+            } else {
+                audio.play().catch(() => {});
+                isPlaying = true;
+                musicBtn.textContent = '🔇 暂停音乐';
+                hudToggle.textContent = '🔊';
+            }
+        }
+        musicBtn.addEventListener('click', toggleMusic);
+        hudToggle.addEventListener('click', toggleMusic);
+
+        // 随机祝福
+        const greetingEl = document.getElementById('greeting');
+        let lastIndex = 0;
+        document.getElementById('randomBtn').addEventListener('click', () => {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * GREETINGS.length);
+            } while (newIndex === lastIndex && GREETINGS.length > 1);
+            lastIndex = newIndex;
+            greetingEl.textContent = GREETINGS[newIndex];
+        });
+
+        // 地图导航
+        document.getElementById('mapBtn').addEventListener('click', () => {
+            window.open('https://uri.amap.com/search?keyword=' + encodeURIComponent('蕊果 RiNGÓ 长沙'), '_blank');
+        });
+
+        greetingEl.textContent = GREETINGS[0];
+    </script>
 </body>
 </html>
