@@ -3,48 +3,375 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🎂 MQ 27岁生日邀请</title>
+    <meta name="description" content="MQ 27岁生日邀请" />
+    <meta property="og:title" content="MQ 27岁生日派对" />
+    <meta property="og:description" content="邀请你参加 MQ 的星露谷主题生日派对" />
+    <title>🎂 MQ 27岁生日邀请 | Stardew Birthday</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #fdf6ec, #f5e1c0); padding: 20px; }
-        .container { text-align: center; max-width: 550px; width: 100%; }
-        h1 { font-size: 1.8rem; color: #4a3728; margin-bottom: 25px; text-shadow: 2px 2px 0 rgba(255, 215, 150, 0.5); }
-        .card { background: rgba(255, 248, 240, 0.95); backdrop-filter: blur(10px); border-radius: 30px; padding: 35px 28px; box-shadow: 0 20px 60px rgba(74, 55, 40, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.6); border: 2px solid rgba(255, 215, 150, 0.3); }
-        .avatar { font-size: 4rem; margin-bottom: 10px; display: block; }
-        h2 { font-size: 1.8rem; color: #4a3728; margin-bottom: 6px; }
-        .age { font-size: 1.1rem; color: #8b6b4a; margin-bottom: 18px; }
-        .age strong { color: #d4845a; font-size: 1.3rem; }
-        .info-grid { background: #f5ede5; border-radius: 16px; padding: 14px 16px; margin-bottom: 18px; }
-        .info-item { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 6px 0; font-size: 0.98rem; color: #4a3728; }
-        .info-item .icon { font-size: 1.2rem; }
-        .tasks { background: #faf3ea; border-radius: 16px; padding: 14px 18px; margin-bottom: 14px; text-align: left; }
-        .tasks-title { font-weight: 600; color: #4a3728; margin-bottom: 6px; text-align: center; }
-        .tasks ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; padding: 0; }
-        .tasks ul li { color: #5a4a3a; font-size: 0.95rem; }
-        .menu { background: #faf3ea; border-radius: 16px; padding: 14px 18px; margin-bottom: 18px; }
-        .menu-title { font-weight: 600; color: #4a3728; margin-bottom: 6px; }
-        .menu-items { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 20px; }
-        .menu-items span { color: #5a4a3a; font-size: 0.95rem; background: #fff; padding: 4px 14px; border-radius: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
-        .message { font-size: 1.08rem; color: #5a4a3a; line-height: 1.8; min-height: 50px; padding: 12px 0; border-top: 2px dashed #e8d5c4; border-bottom: 2px dashed #e8d5c4; margin-bottom: 18px; }
-        .button-group { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-        .button-group button { padding: 12px 24px; font-size: 0.95rem; font-weight: 600; color: #4a3728; background: linear-gradient(135deg, #fddb92, #f5b87e); border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 16px rgba(245, 184, 126, 0.35); transition: all 0.25s ease; flex: 1 1 auto; min-width: 100px; }
-        .button-group button:first-child { background: linear-gradient(135deg, #a8d8ea, #7ec8e3); box-shadow: 0 4px 16px rgba(126, 200, 227, 0.4); }
-        .button-group button:last-child { background: linear-gradient(135deg, #f5b7a1, #e8987a); box-shadow: 0 4px 16px rgba(232, 152, 122, 0.4); }
-        @media (max-width: 480px) { h1 { font-size: 1.4rem; } .card { padding: 22px 16px; } h2 { font-size: 1.5rem; } .avatar { font-size: 3.2rem; } .button-group button { font-size: 0.85rem; padding: 10px 16px; min-width: 80px; } }
+        /* ===== 全局重置 & 字体 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+        :root {
+            --primary: #f5b87e;
+            --primary-dark: #e8987a;
+            --bg-start: #fdf6ec;
+            --bg-end: #f5e1c0;
+            --card-bg: rgba(255, 248, 240, 0.92);
+            --text-dark: #4a3728;
+            --text-medium: #5a4a3a;
+            --text-light: #8b7355;
+            --shadow: rgba(74, 55, 40, 0.2);
+            --radius: 30px;
+            --transition: 0.3s ease;
+        }
+
+        body {
+            font-family: 'Quicksand', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 560px;
+            width: 100%;
+            animation: fadeUp 0.8s ease;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== 顶部标题 ===== */
+        .main-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 28px;
+            text-shadow: 2px 2px 0 rgba(255, 215, 150, 0.4);
+            letter-spacing: 1px;
+        }
+        .main-title .emoji {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* ===== 卡片 ===== */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius);
+            padding: 40px 32px 32px;
+            box-shadow: 0 20px 60px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(255, 215, 150, 0.25);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 28px 72px rgba(74, 55, 40, 0.25);
+        }
+
+        /* ===== 头像 ===== */
+        .avatar {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        /* ===== 姓名 ===== */
+        .name {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+        .name .highlight {
+            background: linear-gradient(135deg, #fddb92, #f5b87e);
+            padding: 0 12px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        /* ===== 年龄标语 ===== */
+        .age-tag {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-medium);
+            margin-bottom: 18px;
+        }
+        .age-tag strong {
+            color: #d4845a;
+            font-size: 1.5rem;
+        }
+
+        /* ===== 信息网格 ===== */
+        .info-grid {
+            background: rgba(245, 237, 229, 0.6);
+            border-radius: 18px;
+            padding: 16px 18px;
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 6px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .info-item .icon {
+            font-size: 1.3rem;
+            width: 28px;
+            text-align: center;
+        }
+        .info-item .label {
+            font-weight: 400;
+            color: var(--text-light);
+            margin-right: 4px;
+        }
+
+        /* ===== 任务清单 ===== */
+        .tasks {
+            background: rgba(250, 243, 234, 0.6);
+            border-radius: 18px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+        }
+        .tasks-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .tasks ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 18px;
+            padding: 0;
+        }
+        .tasks ul li {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* ===== 菜单 ===== */
+        .menu {
+            background: rgba(250, 243, 234, 0.6);
+            border-radius: 18px;
+            padding: 16px 18px;
+            margin-bottom: 18px;
+        }
+        .menu-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .menu-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+        }
+        .menu-items span {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            font-weight: 500;
+            background: #fff;
+            padding: 4px 16px;
+            border-radius: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ===== 祝福语 ===== */
+        .message {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+            padding: 16px 0;
+            border-top: 2px dashed rgba(232, 213, 196, 0.6);
+            border-bottom: 2px dashed rgba(232, 213, 196, 0.6);
+            margin-bottom: 20px;
+            font-weight: 500;
+            min-height: 60px;
+        }
+
+        /* ===== 按钮组 ===== */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .button-group button {
+            padding: 13px 28px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #fddb92, #f5b87e);
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(245, 184, 126, 0.35);
+            transition: all var(--transition);
+            flex: 1 1 auto;
+            min-width: 100px;
+            font-family: inherit;
+        }
+        .button-group button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(245, 184, 126, 0.5);
+        }
+        .button-group button:active {
+            transform: scale(0.95);
+        }
+
+        .button-group button.music-btn {
+            background: linear-gradient(135deg, #a8d8ea, #7ec8e3);
+            box-shadow: 0 4px 18px rgba(126, 200, 227, 0.35);
+        }
+        .button-group button.music-btn:hover {
+            box-shadow: 0 8px 30px rgba(126, 200, 227, 0.5);
+        }
+        .button-group button.map-btn {
+            background: linear-gradient(135deg, #f5b7a1, #e8987a);
+            box-shadow: 0 4px 18px rgba(232, 152, 122, 0.35);
+        }
+        .button-group button.map-btn:hover {
+            box-shadow: 0 8px 30px rgba(232, 152, 122, 0.5);
+        }
+
+        /* ===== HUD 状态栏（游戏风格） ===== */
+        .game-hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(74, 55, 40, 0.08);
+            border-radius: 60px;
+            padding: 8px 18px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            backdrop-filter: blur(4px);
+        }
+        .game-hud .hud-day {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .game-hud .hud-time {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .game-hud .hud-music-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 30px;
+            transition: background var(--transition);
+        }
+        .game-hud .hud-music-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 480px) {
+            .main-title { font-size: 1.5rem; }
+            .card { padding: 26px 18px; }
+            .name { font-size: 1.8rem; }
+            .avatar { font-size: 3.8rem; }
+            .age-tag { font-size: 1rem; }
+            .age-tag strong { font-size: 1.3rem; }
+            .info-item { font-size: 0.9rem; flex-wrap: wrap; gap: 4px; }
+            .button-group button { font-size: 0.85rem; padding: 11px 16px; min-width: 80px; }
+            .game-hud { font-size: 0.75rem; padding: 6px 14px; flex-wrap: wrap; gap: 4px; }
+            .tasks ul li { font-size: 0.85rem; }
+            .menu-items span { font-size: 0.85rem; }
+            .message { font-size: 0.98rem; }
+        }
+        @media (max-width: 380px) {
+            .card { padding: 20px 14px; }
+            .name { font-size: 1.5rem; }
+            .button-group button { font-size: 0.78rem; padding: 10px 12px; min-width: 70px; }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>🎉 星露谷生日邀请函</h1>
+
+        <!-- HUD 状态栏 -->
+        <div class="game-hud">
+            <span class="hud-day">🌞 秋 · 第 27 年</span>
+            <span class="hud-time">⏰ 19:00</span>
+            <button id="musicToggle" class="hud-music-toggle" aria-label="切换背景音乐">🔇</button>
+        </div>
+
+        <!-- 主标题 -->
+        <h1 class="main-title">
+            <span class="emoji">🎉</span> 星露谷生日邀请函
+        </h1>
+
+        <!-- 卡片 -->
         <div class="card">
+
             <span class="avatar">🎈</span>
-            <h2>🎂 亲爱的 MQ</h2>
-            <p class="age">✨ 欢迎来到 <strong>27 岁</strong> 的生日派对！</p>
+
+            <h2 class="name">
+                🎂 亲爱的 <span class="highlight">MQ</span>
+            </h2>
+
+            <p class="age-tag">
+                ✨ 欢迎来到 <strong>27 岁</strong> 的生日派对！
+            </p>
+
+            <!-- 信息网格 -->
             <div class="info-grid">
-                <div class="info-item"><span class="icon">📅</span><span>2026年9月12日 星期六</span></div>
-                <div class="info-item"><span class="icon">⏰</span><span>19:00</span></div>
-                <div class="info-item"><span class="icon">📍</span><span>长沙市岳麓区蕊果 RiNGÓ</span></div>
+                <div class="info-item">
+                    <span class="icon">📅</span>
+                    <span><span class="label">日期</span> 2026年9月12日 星期六</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">⏰</span>
+                    <span><span class="label">时间</span> 19:00</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <span><span class="label">地点</span> 长沙市岳麓区蕊果 RiNGÓ</span>
+                </div>
             </div>
+
+            <!-- 任务清单 -->
             <div class="tasks">
                 <p class="tasks-title">🎯 你的任务（4项）</p>
                 <ul>
@@ -54,6 +381,8 @@
                     <li>✅ 拥抱寿星</li>
                 </ul>
             </div>
+
+            <!-- 菜单 -->
             <div class="menu">
                 <p class="menu-title">🍽️ 当晚菜单</p>
                 <div class="menu-items">
@@ -62,13 +391,107 @@
                     <span>🍟 炸薯条</span>
                 </div>
             </div>
-            <p class="message">✨ 愿你的27岁，像星露谷的秋天一样，硕果累累，温暖灿烂！</p>
+
+            <!-- 祝福语 -->
+            <p class="message" id="greeting">
+                ✨ 愿你的27岁，像星露谷的秋天一样，硕果累累，温暖灿烂！
+            </p>
+
+            <!-- 按钮组 -->
             <div class="button-group">
-                <button onclick="alert('🎵 请把你的背景音乐放到同目录下')">🎵 播放音乐</button>
-                <button onclick="location.reload()">✨ 随机祝福</button>
-                <button onclick="window.open('https://uri.amap.com/search?keyword=蕊果%20RiNG%C3%93','_blank')">🗺️ 导航前往</button>
+                <button class="music-btn" id="musicBtn">🎵 播放音乐</button>
+                <button id="randomBtn">✨ 随机祝福</button>
+                <button class="map-btn" id="mapBtn">🗺️ 导航前往</button>
             </div>
+
         </div>
     </div>
+
+    <!-- ===== 音频 ===== -->
+    <audio id="bgm" loop preload="none">
+        <source src="assets/birthday-bgm.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // ============================================================
+        //  祝福语列表
+        // ============================================================
+        const GREETINGS = [
+            "✨ 愿你的27岁，像星露谷的秋天一样，硕果累累，温暖灿烂！",
+            "🎈 生日快乐 MQ！愿新的一岁，农场丰收，幸福满仓！",
+            "🌻 27岁，是星露谷里最美好的季节，愿你享受每一天！",
+            "💎 祝 MQ 生日快乐！愿你的生活像宝石一样闪闪发光！",
+            "🌱 新的一岁，愿你种下的每一颗种子，都开出美丽的花！",
+            "🍂 秋天是收获的季节，愿你的27岁收获满满的爱与快乐！",
+            "🌟 你是星露谷最亮的星，生日快乐，MQ！",
+            "🎁 27岁，新的冒险开始啦！愿你勇敢又快乐！"
+        ];
+
+        // ============================================================
+        //  音乐控制
+        // ============================================================
+        const audio = document.getElementById('bgm');
+        const musicBtn = document.getElementById('musicBtn');
+        const hudMusicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                musicBtn.textContent = '🎵 播放音乐';
+                hudMusicToggle.textContent = '🔇';
+            } else {
+                audio.play().catch(() => {
+                    // 自动播放被阻止时静默处理
+                });
+                isPlaying = true;
+                musicBtn.textContent = '🔇 暂停音乐';
+                hudMusicToggle.textContent = '🔊';
+            }
+        }
+
+        musicBtn.addEventListener('click', toggleMusic);
+        hudMusicToggle.addEventListener('click', toggleMusic);
+
+        // 页面任意点击激活音频上下文（解决移动端自动播放限制）
+        document.addEventListener('click', () => {
+            if (audio.paused && !isPlaying) {
+                // 仅预加载，不自动播放
+            }
+        }, { once: true });
+
+        // ============================================================
+        //  随机祝福
+        // ============================================================
+        const greetingEl = document.getElementById('greeting');
+        let lastIndex = 0;
+
+        document.getElementById('randomBtn').addEventListener('click', () => {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * GREETINGS.length);
+            } while (newIndex === lastIndex && GREETINGS.length > 1);
+            lastIndex = newIndex;
+            greetingEl.textContent = GREETINGS[newIndex];
+            greetingEl.style.opacity = '0';
+            setTimeout(() => { greetingEl.style.opacity = '1'; }, 100);
+        });
+
+        // ============================================================
+        //  地图导航
+        // ============================================================
+        document.getElementById('mapBtn').addEventListener('click', () => {
+            const keyword = encodeURIComponent('蕊果 RiNGÓ 长沙');
+            window.open(`https://uri.amap.com/search?keyword=${keyword}`, '_blank');
+        });
+
+        // ============================================================
+        //  初始化：显示第一条祝福
+        // ============================================================
+        greetingEl.textContent = GREETINGS[0];
+        greetingEl.style.transition = 'opacity 0.25s ease';
+    </script>
+
 </body>
 </html>
