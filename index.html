@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#73b9e7" />
+  <meta name="description" content="寿星的星露谷生日冒险｜2030.10.01" />
+  <meta property="og:title" content="寿星的新一岁任务｜Stardew Birthday" />
+  <meta property="og:description" content="鹈鹕镇发布了限时生日任务，等待你加入队伍。" />
+  <meta property="og:image" content="/assets/share-cover.svg" />
+  <title>寿星的新一岁任务｜Stardew Birthday</title>
+  <link rel="icon" href="/assets/starfruit.png" />
+  <link rel="preload" href="/assets/fonts/fusion-pixel-12px-proportional-zh-hans.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/hero.css" />
+</head>
+<body>
+  <div class="game-hud" aria-label="派对状态">
+    <div class="hud-day"><span data-content="season">秋</span><b data-content="calendarDay">01</b></div>
+    <div class="hud-time"><span>生日倒计时</span><b><i id="days-count">--</i> DAYS</b></div>
+    <button id="music-toggle" class="hud-music" type="button" aria-label="播放背景音乐" aria-pressed="false">♫</button>
+  </div>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="cloud c1"></div><div class="cloud c2"></div>
+      <div class="hero-land" aria-hidden="true">
+        <div class="sun-glow"></div><div class="far-hills"></div>
+        <div class="party-field"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="pond"><span></span><span></span><span></span></div><div class="farm-path"></div>
+        <div class="wood-fence left-fence"></div><div class="wood-fence right-fence"></div>
+        <div class="party-flags"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="bus-stop"><img src="/assets/bus.png" alt="" /><span>NEXT STOP<br />BIRTHDAY</span></div>
+      </div>
+      <article class="letter reveal is-visible">
+        <header class="letter-header"><div class="letter-stamp"><img src="/assets/junimo.gif" alt="祝尼魔邮票" /></div><div><p class="letter-from">PELICAN TOWN EXPRESS</p><small>一封来自刘易斯镇长的信</small></div><b>!</b></header>
+        <div class="quest-title"><small>LIMITED BIRTHDAY QUEST</small><h1><span data-content="celebrant">寿星</span>的<br /><em>新一岁任务</em></h1></div>
+        <p class="letter-copy">亲爱的冒险者：仅出现一次的生日节日即将开启。请准时抵达鹈鹕镇，与我们共同解锁 <b>LEVEL <span data-content="age">XX</span></b>。</p>
+        <div class="letter-meta"><span><small>DATE</small><b data-content="dateDot">2030 · 10 · 01</b></span><span><small>REWARD</small><b>友情 +1000</b></span></div>
+        <button class="wax-seal" type="button" data-scroll="#calendar" aria-label="接受生日任务"><span>接受任务</span><b>★</b></button>
+      </article>
+      <div class="hero-tip">↓ 向上滑动 · 查看任务详情</div>
+    </section>
+
+    <section class="calendar-zone" id="calendar">
+      <div class="section-label reveal"><small>PIERRE'S GENERAL STORE</small><h2>本季日历</h2><p>镇上的重要日子都会出现在这里</p></div>
+      <article class="season-calendar reveal">
+        <header><span class="chicken">●<i>▲</i></span><div><small data-content="calendarYear">2030</small><b><span data-content="season">秋</span>季</b></div><img src="/assets/ancient-fruit.png" alt="季节作物" /></header>
+        <div class="week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        <div class="calendar-grid" id="calendar-grid" aria-label="生日月份日历"></div>
+        <footer><span class="event-dot"></span><b>生日节日：</b><span data-content="dateCn">2030年10月1日 · 星期二</span></footer>
+      </article>
+      <div class="notice-strip reveal">📣 今日公告：带上好心情即可入场，工具和金币都可以留在农场。</div>
+    </section>
+
+    <section class="quest-zone" id="quest">
+      <div class="section-label light reveal"><small>QUEST JOURNAL</small><h2>生日特别委托</h2><p>完成全部目标，领取限定回忆</p></div>
+      <article class="quest-journal reveal">
+        <div class="journal-pin">!</div>
+        <header><small>SPECIAL ORDER</small><h3>「新一岁，大丰收」</h3><span class="progress"><i id="quest-progress"></i></span><b id="quest-count">0 / 4</b></header>
+        <p class="quest-copy">鹈鹕镇需要你的帮助！请按时参加寿星的生日派对，并完成以下庆祝目标。</p>
+        <div class="quest-list" data-content="schedule"></div>
+        <div class="reward"><span>任务奖励</span><b>永久友情 +1000</b><strong>★ 回忆值 MAX</strong></div>
+      </article>
+    </section>
+
+    <section class="saloon-zone" id="saloon">
+      <div class="saloon-sign reveal"><span>THE</span><b>STARDROP</b><strong>SALOON</strong></div>
+      <div class="section-label light reveal"><small>PARTY MENU</small><h2>今晚的餐吧菜单</h2><p>格斯已经为生日节日准备好了</p></div>
+      <div class="menu-board reveal">
+        <article><img src="/assets/starfruit.png" alt="杨桃" /><div><b>幸运星星蛋糕</b><small>甜度 +80 · 幸运 +3</small></div><strong>0g</strong></article>
+        <article><img src="/assets/blueberry.png" alt="蓝莓" /><div><b>蓝莓气泡饮</b><small>速度 +1 · 快乐 +50</small></div><strong>0g</strong></article>
+        <article><img src="/assets/ancient-fruit.png" alt="上古水果" /><div><b>神秘派对特饮</b><small>配方保密 · 友情 +100</small></div><strong>0g</strong></article>
+      </div>
+      <p class="gus-quote reveal">“饿了吗？渴了吗？今天寿星请客！” <b>— 格斯</b></p>
+    </section>
+
+    <section class="gift-zone" id="gifts">
+      <div class="section-label reveal"><small>FRIENDSHIP & GIFTS</small><h2>选择一份祝福</h2><p>点击物品送给寿星，看看友情会发生什么</p></div>
+      <div class="friend-card reveal">
+        <img src="/assets/characters/abigail.png" alt="寿星头像占位" />
+        <div><b data-content="celebrant">寿星</b><span id="heart-meter" aria-label="友情值">♡ ♡ ♡ ♡ ♡</span><small id="gift-reaction">今天是送礼的最佳时机！</small></div>
+      </div>
+      <div class="inventory reveal" aria-label="礼物背包">
+        <button data-gift="杨桃" data-love="true"><img src="/assets/starfruit.png" alt="杨桃" /><span>1</span></button>
+        <button data-gift="蓝莓" data-love="true"><img src="/assets/blueberry.png" alt="蓝莓" /><span>12</span></button>
+        <button data-gift="上古水果" data-love="true"><img src="/assets/ancient-fruit.png" alt="上古水果" /><span>1</span></button>
+        <button data-gift="一整天的陪伴" data-love="true"><b>☺</b><span>∞</span></button>
+      </div>
+      <p class="gift-note reveal">无需准备现实礼物，你的到来就是“最爱礼物”。</p>
+    </section>
+
+    <section class="route-zone" id="route">
+      <div class="section-label light reveal"><small>BUS TICKET</small><h2>前往节日现场</h2><p>下一班车即将从农场出发</p></div>
+      <article class="ticket reveal">
+        <div class="ticket-main"><span>PELICAN TOWN TRANSIT</span><img src="/assets/bus.png" alt="星露谷巴士" /><small>DESTINATION</small><h3 data-content="venueShort">星露谷派对小屋</h3><p data-content="venue">示例市幸福区星露谷派对小屋</p></div>
+        <div class="ticket-stub"><small>DATE</small><b data-content="dateDot">2030 · 10 · 01</b><small>PASSENGER</small><b>YOU +1</b></div>
+      </article>
+      <div class="map-window reveal"><img src="/assets/pelican-town.webp" alt="鹈鹕镇地图" /><span class="map-marker">★<small>派对</small></span></div>
+      <a class="route-button reveal" data-content="navigationLink" rel="noreferrer">打开现实世界地图 →</a>
+    </section>
+
+    <section class="final-zone" id="ending">
+      <div class="lanterns" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <img src="/assets/junimo.gif" alt="祝尼魔" />
+      <p>QUEST ACCEPTED</p>
+      <h2>在星露谷<br />等你加入队伍</h2>
+      <div class="final-date"><span data-content="dateDot">2030 · 10 · 01</span><b data-content="celebrant">寿星</b></div>
+      <button type="button" data-scroll="#top">返回标题画面</button>
+      <footer>非官方粉丝创作 · 游戏素材版权归 ConcernedApe 所有<br />仅用于私人生日邀请，不作商业用途</footer>
+    </section>
+  </main>
+  <audio id="birthday-music" src="/assets/birthday-bgm.mp3" preload="metadata" loop></audio>
+  <p id="audio-status" class="sr-only" aria-live="polite"></p>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
